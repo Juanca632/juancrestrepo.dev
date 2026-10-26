@@ -14,6 +14,7 @@ window.I18N_FR = {
   'hero.lead': "Depuis 3 ans, je développe des applications professionnelles avec <strong>React</strong> et <strong>Python</strong>, et je pilote tout mon processus de développement avec des <strong class='hl'>agents IA</strong> : spécifications, implémentation, tests et revue de code.",
   'hero.cta': 'Voir les projets',
   'hero.cv': 'Télécharger le CV',
+  'hero.liveHint': 'Deux projets à essayer en ligne →',
   'hero.cvHref': 'assets/cv-fr.pdf',
   'hero.email': 'E-mail',
 
@@ -75,7 +76,7 @@ window.I18N_FR = {
   'p1.desc': "Montre où part votre argent chaque mois. Ajoutez une dépense en quelques secondes, voyez votre solde et vos dépenses par catégorie, et comparez avec les mois précédents pour savoir si vous dépensez plus que d'habitude.",
 
   'projects.demo': 'Démo en ligne ↗',
-  'p2.meta': 'Projet personnel · 2026',
+  'p2.meta': 'Projet personnel · 2025 – présent',
   'p2.desc': "Aide à choisir quoi regarder ce soir. Parcourez films et séries, voyez où les regarder dans votre pays, ou dites simplement à l'assistant IA ce dont vous avez envie et recevez quelques suggestions, chacune avec sa raison.",
 
   'gallery.prev': 'Image précédente',

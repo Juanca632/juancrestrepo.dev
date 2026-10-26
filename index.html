@@ -45,9 +45,9 @@
       <a href="#top" class="logo">juanc<span>restrepo</span></a>
       <nav>
         <a href="#about" data-i18n="nav.about">About</a>
-        <a href="#ai" data-i18n="nav.ai">AI workflow</a>
-        <a href="#experience" data-i18n="nav.experience">Experience</a>
         <a href="#projects" data-i18n="nav.projects">Projects</a>
+        <a href="#experience" data-i18n="nav.experience">Experience</a>
+        <a href="#ai" data-i18n="nav.ai">AI workflow</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
       </nav>
       <div class="nav-tools">
@@ -74,6 +74,7 @@
           <a class="btn btn-primary" href="#projects" data-i18n="hero.cta">View projects</a>
           <a data-goatcounter-click="cv-download" class="btn" href="assets/cv-fr.pdf" data-i18n-href="hero.cvHref" target="_blank" rel="noopener" data-i18n="hero.cv">Download CV</a>
         </div>
+        <a class="live-hint" data-goatcounter-click="hero-live-hint" href="#projects" data-i18n="hero.liveHint">2 projects you can try live →</a>
         <ul class="socials">
           <li><a data-goatcounter-click="github" href="https://github.com/Juanca632" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.3 4.3 18.3 4.6 18.3 4.6c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
@@ -119,46 +120,119 @@
       </div>
     </section>
 
-    <!-- ============ AI WORKFLOW ============ -->
-    <section id="ai" class="section band container">
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="section container">
       <header class="section-head">
-        <p class="eyebrow" data-i18n="nav.ai">AI workflow</p>
-        <h2 data-i18n="ai.title">AI in every step, judgment in every step</h2>
-        <p class="section-lead" data-i18n="ai.lead">I use AI agents to build faster, never to think less. They take part in every step, and I stay responsible for what ships.</p>
+        <p class="eyebrow" data-i18n="nav.projects">Projects</p>
+        <h2 data-i18n="projects.title">Selected work</h2>
       </header>
+      <!--
+        One <article class="work"> per project; rows alternate image left / right.
+        Screenshots: the first one is the cover, all of them open in the viewer (main.js).
+        No screenshots yet: use a <div class="work-media cover"> instead.
+        Add the French text of every data-i18n key in i18n.js.
+      -->
+      <div class="works">
 
-      <!-- A real sequence; AI takes part in every step, judgment too -->
-      <div class="flow-box">
-        <ol class="flow">
-          <li><span class="flow-dot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><h3 data-i18n="ai.f1">Design</h3><p data-i18n="ai.f1d">I decide the architecture and the trade-offs; AI helps me explore options.</p></li>
-          <li><span class="flow-dot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></svg></span><h3 data-i18n="ai.f2">Plan</h3><p data-i18n="ai.f2d">The work is split into small tasks, each with a clear way to check it.</p></li>
-          <li><span class="flow-dot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg></span><h3 data-i18n="ai.f3">Build</h3><p data-i18n="ai.f3d">Agents write the code and the tests, several tasks in parallel.</p></li>
-          <li><span class="flow-dot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><h3 data-i18n="ai.f4">Review</h3><p data-i18n="ai.f4d">Reviewer agents and I check every change before it moves on.</p></li>
-          <li><span class="flow-dot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 12a13 13 0 0 1 11-9 13 13 0 0 1-9 11l-3 1-1-1z"/><path d="M9 12H5l2-4h5M12 15v4l4-2v-5"/></svg></span><h3 data-i18n="ai.f5">Ship</h3><p data-i18n="ai.f5d">Automated tests run and the app deploys, with nothing left to manual steps.</p></li>
-        </ol>
-      </div>
+        <article class="work olen">
+          <button class="work-media devices" data-shots aria-label="OlenPeps: view 6 screenshots" data-i18n-aria="p4.view">
+            <span class="laptop"><span class="laptop-screen"><img src="assets/projects/covers/olenpeps-live.jpg" alt="" loading="lazy" width="800" height="500"></span><span class="laptop-base"></span></span>
+            <span class="phone"><img src="assets/projects/covers/olenpeps-mobile.jpg" alt="" loading="lazy" width="400" height="865"></span>
+            <span class="shot-count"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="m21 16-5-5-9 8"/></svg>6</span>
+          </button>
+            <div class="shots" hidden>
+              <figure><img src="assets/projects/olenpeps-live.jpg" alt="Live view of a mobile power installation near Marseille" data-i18n-alt="p4.a1" loading="lazy"><figcaption data-i18n="p4.s1">Live view of one installation: grid input, solar, battery and output, updated in real time.</figcaption></figure>
+              <figure><img src="assets/projects/olenpeps-console.jpg" alt="The installation's touchscreen opened remotely from the browser" data-i18n-alt="p4.a2" loading="lazy"><figcaption data-i18n="p4.s2">Remote console: the installation's own touchscreen, opened from the browser.</figcaption></figure>
+              <figure><img src="assets/projects/olenpeps-home.jpg" alt="Home page with every installation and its status" data-i18n-alt="p4.a3" loading="lazy"><figcaption data-i18n="p4.s3">Home: every installation with its status, alarms and availability.</figcaption></figure>
+              <figure><img src="assets/projects/olenpeps-mobile.jpg" alt="Live view of an installation on a phone" data-i18n-alt="p4.a4" loading="lazy"><figcaption data-i18n="p4.s4">The same live view on a phone.</figcaption></figure>
+              <figure><img src="assets/projects/olenpeps-stats.jpg" alt="Statistics page with production per installation" data-i18n-alt="p4.a5" loading="lazy"><figcaption data-i18n="p4.s5">Statistics: solar production, grid independence and CO₂ avoided per installation.</figcaption></figure>
+              <figure><img src="assets/projects/olenpeps-alarms.jpg" alt="Alarm history chart and log" data-i18n-alt="p4.a6" loading="lazy"><figcaption data-i18n="p4.s6">Alarm log with history, active alarms and average resolution time.</figcaption></figure>
+            </div>
+          <div class="work-text">
+            <p class="work-meta" data-i18n="p4.meta">Olenergies · 2023 – now</p>
+            <h3>OlenPeps</h3>
+            <p class="work-desc" data-i18n="p4.desc">Lets businesses follow their solar and battery installations from anywhere: battery level, solar production and alarms, live on a map. They can even open an installation's own touchscreen from the browser, as if they were standing next to it.</p>
+            <ul class="work-tags"><li>React</li><li>TypeScript</li><li>FastAPI</li><li>WebSocket</li><li>Azure</li></ul>
+            <div class="work-links">
+              <a class="demo" data-goatcounter-click="olenpeps-demo" href="https://olenpeps.com" target="_blank" rel="noopener" data-i18n="projects.tryDemo">Try the demo ↗</a>
+              <span class="private-note" data-i18n="projects.private">Private code</span>
+            </div>
+          </div>
+        </article>
 
-      <div class="cards">
-        <article class="card">
-          <span class="card-icon amber"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span>
-          <h3 data-i18n="ai.c1.t">Judgment first</h3>
-          <p data-i18n="ai.c1.d">Architecture, data model and trade-offs are decided before any agent writes a line. Agents follow a plan; they don't make it.</p>
+        <article class="work movies">
+          <button class="work-media devices" data-shots aria-label="MoviesApp: view 6 screenshots" data-i18n-aria="p2.view">
+            <span class="laptop"><span class="laptop-screen"><img src="assets/projects/covers/movies-assistant.jpg" alt="" loading="lazy" width="800" height="500"></span><span class="laptop-base"></span></span>
+            <span class="phone"><img src="assets/projects/covers/movies-mobile-ai.jpg" alt="" loading="lazy" width="400" height="865"></span>
+            <span class="shot-count"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="m21 16-5-5-9 8"/></svg>6</span>
+          </button>
+            <div class="shots" hidden>
+              <figure><img src="assets/projects/movies-assistant.jpg" alt="The AI assistant recommending something funny and short" data-i18n-alt="p2.a1" loading="lazy"><figcaption data-i18n="p2.s1">Ask AI: each pick comes with why it fits and where to stream it.</figcaption></figure>
+              <figure><img src="assets/projects/movies-mobile-ai.jpg" alt="The AI assistant on a phone" data-i18n-alt="p2.a2" loading="lazy"><figcaption data-i18n="p2.s2">The assistant on a phone.</figcaption></figure>
+              <figure><img src="assets/projects/movies-home.jpg" alt="MoviesApp home page" data-i18n-alt="p2.a3" loading="lazy"><figcaption data-i18n="p2.s3">Home page with the featured title and rows of posters.</figcaption></figure>
+              <figure><img src="assets/projects/movies-detail.jpg" alt="Project Hail Mary detail page" data-i18n-alt="p2.a4" loading="lazy"><figcaption data-i18n="p2.s4">Detail page: critic scores, awards and where to watch.</figcaption></figure>
+              <figure><img src="assets/projects/movies-mobile.jpg" alt="MoviesApp home page on a phone" data-i18n-alt="p2.a5" loading="lazy"><figcaption data-i18n="p2.s5">Home page on a phone, with the bottom navigation.</figcaption></figure>
+              <figure><img src="assets/projects/movies-for-you.jpg" alt="Home rows with AI picks based on the user's favorites" data-i18n-alt="p2.a6" loading="lazy"><figcaption data-i18n="p2.s6">Picked for you by AI, from your favorites.</figcaption></figure>
+            </div>
+          <div class="work-text">
+            <p class="work-meta" data-i18n="p2.meta">Personal project · 2025 – now</p>
+            <h3>MoviesApp</h3>
+            <p class="work-desc" data-i18n="p2.desc">Helps you decide what to watch tonight. Browse movies and shows, see where they stream in your country, or just tell the AI assistant what you feel like and get a few picks, each with a reason.</p>
+            <ul class="work-tags"><li>React</li><li>FastAPI</li><li>Claude API</li><li>PostgreSQL</li></ul>
+            <div class="work-links">
+              <a class="demo" data-goatcounter-click="moviesapp-demo" href="https://moviesapp.juancrestrepo.dev" target="_blank" rel="noopener" data-i18n="projects.demo">Live demo ↗</a>
+              <a class="code" data-goatcounter-click="moviesapp-code" href="https://github.com/Juanca632/movies_app" target="_blank" rel="noopener" data-i18n="projects.code">Code ↗</a>
+            </div>
+          </div>
         </article>
-        <article class="card">
-          <span class="card-icon blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></span>
-          <h3 data-i18n="ai.c2.t">Every change reviewed</h3>
-          <p data-i18n="ai.c2.d">I read the code agents write the way I'd read a teammate's, and automated tests back every change. If I can't explain it, it doesn't ship.</p>
+
+        <article class="work monthwise">
+          <button class="work-media phones" data-shots aria-label="Monthwise: view 5 screenshots" data-i18n-aria="p1.view">
+            <span class="phone"><img src="assets/projects/covers/monthwise-home.jpg" alt="" loading="lazy" width="400" height="865"></span>
+            <span class="phone"><img src="assets/projects/covers/monthwise-insights.jpg" alt="" loading="lazy" width="400" height="865"></span>
+            <span class="shot-count"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="m21 16-5-5-9 8"/></svg>5</span>
+          </button>
+            <div class="shots" hidden>
+              <figure><img src="assets/projects/monthwise-home.jpg" alt="Monthwise month view with balance, spending pace and categories" data-i18n-alt="p1.a1" loading="lazy"><figcaption data-i18n="p1.s1">The month at a glance: balance, spending pace against last month and spending by category.</figcaption></figure>
+              <figure><img src="assets/projects/monthwise-trend.jpg" alt="Category changes and six-month savings chart" data-i18n-alt="p1.a2" loading="lazy"><figcaption data-i18n="p1.s2">Insights: what changed against last month and how much was saved over the last six months.</figcaption></figure>
+              <figure><img src="assets/projects/monthwise-insights.jpg" alt="Spending pace chart comparing this month and last month" data-i18n-alt="p1.a3" loading="lazy"><figcaption data-i18n="p1.s3">Spending pace: this month against last month, day by day.</figcaption></figure>
+              <figure><img src="assets/projects/monthwise-transactions.jpg" alt="List of the month's transactions grouped by day" data-i18n-alt="p1.a4" loading="lazy"><figcaption data-i18n="p1.s4">Every transaction of the month, grouped by day.</figcaption></figure>
+              <figure><img src="assets/projects/monthwise-add.jpg" alt="Adding an expense in Monthwise" data-i18n-alt="p1.a5" loading="lazy"><figcaption data-i18n="p1.s5">Adding an expense takes a few taps: amount, category, date and an optional note.</figcaption></figure>
+            </div>
+          <div class="work-text">
+            <p class="work-meta" data-i18n="p1.meta">Personal project · 2026</p>
+            <h3>Monthwise</h3>
+            <p class="work-desc" data-i18n="p1.desc">Shows where your money goes each month. Add an expense in a few taps, see your balance and spending by category, and compare with past months to know if you are spending more than usual.</p>
+            <ul class="work-tags"><li>React Native</li><li>Expo</li><li>TypeScript</li><li>SQLite</li></ul>
+            <div class="work-links">
+              <a class="code" data-goatcounter-click="monthwise-code" href="https://github.com/Juanca632/monthwise" target="_blank" rel="noopener" data-i18n="projects.code">Code ↗</a>
+            </div>
+          </div>
         </article>
-        <article class="card">
-          <span class="card-icon blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/><path d="M12 7.5l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5L8.5 11l2.5-1z"/></svg></span>
-          <h3 data-i18n="ai.c3.t">AI inside the product</h3>
-          <p data-i18n="ai.c3.d">I also build AI features into apps: agents that use the app's own data as tools, with guardrails so they can't invent answers.</p>
+
+        <article class="work steam">
+          <button class="work-media devices" data-shots aria-label="Steam Backlog Coach: view 4 screenshots" data-i18n-aria="p3.view">
+            <span class="laptop"><span class="laptop-screen"><img src="assets/projects/covers/steam-ai.jpg" alt="" loading="lazy" width="800" height="500"></span><span class="laptop-base"></span></span>
+            <span class="phone"><img src="assets/projects/covers/steam-mobile-ai.jpg" alt="" loading="lazy" width="400" height="865"></span>
+            <span class="shot-count"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="m21 16-5-5-9 8"/></svg>4</span>
+          </button>
+            <div class="shots" hidden>
+              <figure><img src="assets/projects/steam-ai.jpg" alt="Game picks for a chill hour with a friend" data-i18n-alt="p3.a1" loading="lazy"><figcaption data-i18n="p3.s1">"Something chill to play with a friend, 60 minutes": one pick from the backlog and new ones to discover, each with why it fits.</figcaption></figure>
+              <figure><img src="assets/projects/steam-mobile-ai.jpg" alt="The picks on a phone" data-i18n-alt="p3.a2" loading="lazy"><figcaption data-i18n="p3.s2">The same picks on a phone.</figcaption></figure>
+              <figure><img src="assets/projects/steam-home.jpg" alt="Steam Backlog Coach dashboard" data-i18n-alt="p3.a3" loading="lazy"><figcaption data-i18n="p3.s3">The backlog: what you have not started, what is in progress and what you finished, by genre.</figcaption></figure>
+              <figure><img src="assets/projects/steam-mobile.jpg" alt="Steam Backlog Coach on a phone" data-i18n-alt="p3.a4" loading="lazy"><figcaption data-i18n="p3.s4">The dashboard on a phone.</figcaption></figure>
+            </div>
+          <div class="work-text">
+            <p class="work-meta" data-i18n="p3.meta">Personal project · 2026</p>
+            <h3>Steam Backlog Coach</h3>
+            <p class="work-desc" data-i18n="p3.desc">Tells you what to play today. It looks at your Steam library, shows what you have never started or left halfway, and suggests a game for the time you have and the mood you are in.</p>
+            <ul class="work-tags"><li>Python</li><li>FastAPI</li><li>React</li><li>LLM</li></ul>
+            <div class="work-links">
+              <a class="code" data-goatcounter-click="steam-backlog-code" href="https://github.com/Juanca632/steam-backlog-coach" target="_blank" rel="noopener" data-i18n="projects.code">Code ↗</a>
+            </div>
+          </div>
         </article>
-        <article class="card">
-          <span class="card-icon coral"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"/></svg></span>
-          <h3 data-i18n="ai.c4.t">Team adoption</h3>
-          <p data-i18n="ai.c4.d">I brought Claude Code and MCP into my team's daily work: shared project rules and automated code review.</p>
-        </article>
+
       </div>
     </section>
 
@@ -215,119 +289,46 @@
       </div>
     </section>
 
-    <!-- ============ PROJECTS ============ -->
-    <section id="projects" class="section container">
+    <!-- ============ AI WORKFLOW ============ -->
+    <section id="ai" class="section container">
       <header class="section-head">
-        <p class="eyebrow" data-i18n="nav.projects">Projects</p>
-        <h2 data-i18n="projects.title">Selected work</h2>
+        <p class="eyebrow" data-i18n="nav.ai">AI workflow</p>
+        <h2 data-i18n="ai.title">AI in every step, judgment in every step</h2>
+        <p class="section-lead" data-i18n="ai.lead">I use AI agents to build faster, never to think less. They take part in every step, and I stay responsible for what ships.</p>
       </header>
-      <!--
-        One <article class="work"> per project; rows alternate image left / right.
-        Screenshots: the first one is the cover, all of them open in the viewer (main.js).
-        No screenshots yet: use a <div class="work-media cover"> instead.
-        Add the French text of every data-i18n key in i18n.js.
-      -->
-      <div class="works">
 
-        <article class="work olen">
-          <button class="work-media devices" data-shots aria-label="OlenPeps: view 6 screenshots" data-i18n-aria="p4.view">
-            <span class="laptop"><span class="laptop-screen"><img src="assets/projects/covers/olenpeps-live.jpg" alt="" loading="lazy" width="800" height="500"></span><span class="laptop-base"></span></span>
-            <span class="phone"><img src="assets/projects/covers/olenpeps-mobile.jpg" alt="" loading="lazy" width="400" height="865"></span>
-            <span class="shot-count"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="m21 16-5-5-9 8"/></svg>6</span>
-          </button>
-            <div class="shots" hidden>
-              <figure><img src="assets/projects/olenpeps-live.jpg" alt="Live view of a mobile power installation near Marseille" data-i18n-alt="p4.a1" loading="lazy"><figcaption data-i18n="p4.s1">Live view of one installation: grid input, solar, battery and output, updated in real time.</figcaption></figure>
-              <figure><img src="assets/projects/olenpeps-console.jpg" alt="The installation's touchscreen opened remotely from the browser" data-i18n-alt="p4.a2" loading="lazy"><figcaption data-i18n="p4.s2">Remote console: the installation's own touchscreen, opened from the browser.</figcaption></figure>
-              <figure><img src="assets/projects/olenpeps-home.jpg" alt="Home page with every installation and its status" data-i18n-alt="p4.a3" loading="lazy"><figcaption data-i18n="p4.s3">Home: every installation with its status, alarms and availability.</figcaption></figure>
-              <figure><img src="assets/projects/olenpeps-mobile.jpg" alt="Live view of an installation on a phone" data-i18n-alt="p4.a4" loading="lazy"><figcaption data-i18n="p4.s4">The same live view on a phone.</figcaption></figure>
-              <figure><img src="assets/projects/olenpeps-stats.jpg" alt="Statistics page with production per installation" data-i18n-alt="p4.a5" loading="lazy"><figcaption data-i18n="p4.s5">Statistics: solar production, grid independence and CO₂ avoided per installation.</figcaption></figure>
-              <figure><img src="assets/projects/olenpeps-alarms.jpg" alt="Alarm history chart and log" data-i18n-alt="p4.a6" loading="lazy"><figcaption data-i18n="p4.s6">Alarm log with history, active alarms and average resolution time.</figcaption></figure>
-            </div>
-          <div class="work-text">
-            <p class="work-meta" data-i18n="p4.meta">Olenergies · 2023 – now</p>
-            <h3>OlenPeps</h3>
-            <p class="work-desc" data-i18n="p4.desc">Lets businesses follow their solar and battery installations from anywhere: battery level, solar production and alarms, live on a map. They can even open an installation's own touchscreen from the browser, as if they were standing next to it.</p>
-            <ul class="work-tags"><li>React</li><li>TypeScript</li><li>FastAPI</li><li>WebSocket</li><li>Azure</li></ul>
-            <div class="work-links">
-              <a data-goatcounter-click="olenpeps-demo" href="https://olenpeps.com" target="_blank" rel="noopener" data-i18n="projects.tryDemo">Try the demo ↗</a>
-              <span class="private-note" data-i18n="projects.private">Private code</span>
-            </div>
-          </div>
+      <!-- A real sequence; AI takes part in every step, judgment too -->
+      <div class="flow-box">
+        <ol class="flow">
+          <li><span class="flow-dot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><h3 data-i18n="ai.f1">Design</h3><p data-i18n="ai.f1d">I decide the architecture and the trade-offs; AI helps me explore options.</p></li>
+          <li><span class="flow-dot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></svg></span><h3 data-i18n="ai.f2">Plan</h3><p data-i18n="ai.f2d">The work is split into small tasks, each with a clear way to check it.</p></li>
+          <li><span class="flow-dot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg></span><h3 data-i18n="ai.f3">Build</h3><p data-i18n="ai.f3d">Agents write the code and the tests, several tasks in parallel.</p></li>
+          <li><span class="flow-dot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><h3 data-i18n="ai.f4">Review</h3><p data-i18n="ai.f4d">Reviewer agents and I check every change before it moves on.</p></li>
+          <li><span class="flow-dot"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 12a13 13 0 0 1 11-9 13 13 0 0 1-9 11l-3 1-1-1z"/><path d="M9 12H5l2-4h5M12 15v4l4-2v-5"/></svg></span><h3 data-i18n="ai.f5">Ship</h3><p data-i18n="ai.f5d">Automated tests run and the app deploys, with nothing left to manual steps.</p></li>
+        </ol>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <span class="card-icon amber"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span>
+          <h3 data-i18n="ai.c1.t">Judgment first</h3>
+          <p data-i18n="ai.c1.d">Architecture, data model and trade-offs are decided before any agent writes a line. Agents follow a plan; they don't make it.</p>
         </article>
-
-        <article class="work movies">
-          <button class="work-media devices" data-shots aria-label="MoviesApp: view 6 screenshots" data-i18n-aria="p2.view">
-            <span class="laptop"><span class="laptop-screen"><img src="assets/projects/covers/movies-assistant.jpg" alt="" loading="lazy" width="800" height="500"></span><span class="laptop-base"></span></span>
-            <span class="phone"><img src="assets/projects/covers/movies-mobile-ai.jpg" alt="" loading="lazy" width="400" height="865"></span>
-            <span class="shot-count"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="m21 16-5-5-9 8"/></svg>6</span>
-          </button>
-            <div class="shots" hidden>
-              <figure><img src="assets/projects/movies-assistant.jpg" alt="The AI assistant recommending something funny and short" data-i18n-alt="p2.a1" loading="lazy"><figcaption data-i18n="p2.s1">Ask AI: each pick comes with why it fits and where to stream it.</figcaption></figure>
-              <figure><img src="assets/projects/movies-mobile-ai.jpg" alt="The AI assistant on a phone" data-i18n-alt="p2.a2" loading="lazy"><figcaption data-i18n="p2.s2">The assistant on a phone.</figcaption></figure>
-              <figure><img src="assets/projects/movies-home.jpg" alt="MoviesApp home page" data-i18n-alt="p2.a3" loading="lazy"><figcaption data-i18n="p2.s3">Home page with the featured title and rows of posters.</figcaption></figure>
-              <figure><img src="assets/projects/movies-detail.jpg" alt="Project Hail Mary detail page" data-i18n-alt="p2.a4" loading="lazy"><figcaption data-i18n="p2.s4">Detail page: critic scores, awards and where to watch.</figcaption></figure>
-              <figure><img src="assets/projects/movies-mobile.jpg" alt="MoviesApp home page on a phone" data-i18n-alt="p2.a5" loading="lazy"><figcaption data-i18n="p2.s5">Home page on a phone, with the bottom navigation.</figcaption></figure>
-              <figure><img src="assets/projects/movies-for-you.jpg" alt="Home rows with AI picks based on the user's favorites" data-i18n-alt="p2.a6" loading="lazy"><figcaption data-i18n="p2.s6">Picked for you by AI, from your favorites.</figcaption></figure>
-            </div>
-          <div class="work-text">
-            <p class="work-meta" data-i18n="p2.meta">Personal project · 2026</p>
-            <h3>MoviesApp</h3>
-            <p class="work-desc" data-i18n="p2.desc">Helps you decide what to watch tonight. Browse movies and shows, see where they stream in your country, or just tell the AI assistant what you feel like and get a few picks, each with a reason.</p>
-            <ul class="work-tags"><li>React</li><li>FastAPI</li><li>Claude API</li><li>PostgreSQL</li></ul>
-            <div class="work-links">
-              <a data-goatcounter-click="moviesapp-demo" href="https://moviesapp.juancrestrepo.dev" target="_blank" rel="noopener" data-i18n="projects.demo">Live demo ↗</a>
-              <a data-goatcounter-click="moviesapp-code" href="https://github.com/Juanca632/movies_app" target="_blank" rel="noopener" data-i18n="projects.code">Code ↗</a>
-            </div>
-          </div>
+        <article class="card">
+          <span class="card-icon blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></span>
+          <h3 data-i18n="ai.c2.t">Every change reviewed</h3>
+          <p data-i18n="ai.c2.d">I read the code agents write the way I'd read a teammate's, and automated tests back every change. If I can't explain it, it doesn't ship.</p>
         </article>
-
-        <article class="work monthwise">
-          <button class="work-media phones" data-shots aria-label="Monthwise: view 5 screenshots" data-i18n-aria="p1.view">
-            <span class="phone"><img src="assets/projects/covers/monthwise-home.jpg" alt="" loading="lazy" width="400" height="865"></span>
-            <span class="phone"><img src="assets/projects/covers/monthwise-insights.jpg" alt="" loading="lazy" width="400" height="865"></span>
-            <span class="shot-count"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="m21 16-5-5-9 8"/></svg>5</span>
-          </button>
-            <div class="shots" hidden>
-              <figure><img src="assets/projects/monthwise-home.jpg" alt="Monthwise month view with balance, spending pace and categories" data-i18n-alt="p1.a1" loading="lazy"><figcaption data-i18n="p1.s1">The month at a glance: balance, spending pace against last month and spending by category.</figcaption></figure>
-              <figure><img src="assets/projects/monthwise-trend.jpg" alt="Category changes and six-month savings chart" data-i18n-alt="p1.a2" loading="lazy"><figcaption data-i18n="p1.s2">Insights: what changed against last month and how much was saved over the last six months.</figcaption></figure>
-              <figure><img src="assets/projects/monthwise-insights.jpg" alt="Spending pace chart comparing this month and last month" data-i18n-alt="p1.a3" loading="lazy"><figcaption data-i18n="p1.s3">Spending pace: this month against last month, day by day.</figcaption></figure>
-              <figure><img src="assets/projects/monthwise-transactions.jpg" alt="List of the month's transactions grouped by day" data-i18n-alt="p1.a4" loading="lazy"><figcaption data-i18n="p1.s4">Every transaction of the month, grouped by day.</figcaption></figure>
-              <figure><img src="assets/projects/monthwise-add.jpg" alt="Adding an expense in Monthwise" data-i18n-alt="p1.a5" loading="lazy"><figcaption data-i18n="p1.s5">Adding an expense takes a few taps: amount, category, date and an optional note.</figcaption></figure>
-            </div>
-          <div class="work-text">
-            <p class="work-meta" data-i18n="p1.meta">Personal project · 2026</p>
-            <h3>Monthwise</h3>
-            <p class="work-desc" data-i18n="p1.desc">Shows where your money goes each month. Add an expense in a few taps, see your balance and spending by category, and compare with past months to know if you are spending more than usual.</p>
-            <ul class="work-tags"><li>React Native</li><li>Expo</li><li>TypeScript</li><li>SQLite</li></ul>
-            <div class="work-links">
-              <a data-goatcounter-click="monthwise-code" href="https://github.com/Juanca632/monthwise" target="_blank" rel="noopener" data-i18n="projects.code">Code ↗</a>
-            </div>
-          </div>
+        <article class="card">
+          <span class="card-icon blue"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/><path d="M12 7.5l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5L8.5 11l2.5-1z"/></svg></span>
+          <h3 data-i18n="ai.c3.t">AI inside the product</h3>
+          <p data-i18n="ai.c3.d">I also build AI features into apps: agents that use the app's own data as tools, with guardrails so they can't invent answers.</p>
         </article>
-
-        <article class="work steam">
-          <button class="work-media devices" data-shots aria-label="Steam Backlog Coach: view 4 screenshots" data-i18n-aria="p3.view">
-            <span class="laptop"><span class="laptop-screen"><img src="assets/projects/covers/steam-ai.jpg" alt="" loading="lazy" width="800" height="500"></span><span class="laptop-base"></span></span>
-            <span class="phone"><img src="assets/projects/covers/steam-mobile-ai.jpg" alt="" loading="lazy" width="400" height="865"></span>
-            <span class="shot-count"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="m21 16-5-5-9 8"/></svg>4</span>
-          </button>
-            <div class="shots" hidden>
-              <figure><img src="assets/projects/steam-ai.jpg" alt="Game picks for a chill hour with a friend" data-i18n-alt="p3.a1" loading="lazy"><figcaption data-i18n="p3.s1">"Something chill to play with a friend, 60 minutes": one pick from the backlog and new ones to discover, each with why it fits.</figcaption></figure>
-              <figure><img src="assets/projects/steam-mobile-ai.jpg" alt="The picks on a phone" data-i18n-alt="p3.a2" loading="lazy"><figcaption data-i18n="p3.s2">The same picks on a phone.</figcaption></figure>
-              <figure><img src="assets/projects/steam-home.jpg" alt="Steam Backlog Coach dashboard" data-i18n-alt="p3.a3" loading="lazy"><figcaption data-i18n="p3.s3">The backlog: what you have not started, what is in progress and what you finished, by genre.</figcaption></figure>
-              <figure><img src="assets/projects/steam-mobile.jpg" alt="Steam Backlog Coach on a phone" data-i18n-alt="p3.a4" loading="lazy"><figcaption data-i18n="p3.s4">The dashboard on a phone.</figcaption></figure>
-            </div>
-          <div class="work-text">
-            <p class="work-meta" data-i18n="p3.meta">Personal project · 2026</p>
-            <h3>Steam Backlog Coach</h3>
-            <p class="work-desc" data-i18n="p3.desc">Tells you what to play today. It looks at your Steam library, shows what you have never started or left halfway, and suggests a game for the time you have and the mood you are in.</p>
-            <ul class="work-tags"><li>Python</li><li>FastAPI</li><li>React</li><li>LLM</li></ul>
-            <div class="work-links">
-              <a data-goatcounter-click="steam-backlog-code" href="https://github.com/Juanca632/steam-backlog-coach" target="_blank" rel="noopener" data-i18n="projects.code">Code ↗</a>
-            </div>
-          </div>
+        <article class="card">
+          <span class="card-icon coral"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"/></svg></span>
+          <h3 data-i18n="ai.c4.t">Team adoption</h3>
+          <p data-i18n="ai.c4.d">I brought Claude Code and MCP into my team's daily work: shared project rules and automated code review.</p>
         </article>
-
       </div>
     </section>
 
