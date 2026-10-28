@@ -1,6 +1,6 @@
 // French translation. Keys match the data-i18n attributes in index.html (English is the HTML itself).
 window.I18N_FR = {
-  'meta.title': 'Juan Restrepo · Développeur full stack',
+  'meta.title': 'Juan Restrepo · Développeur full stack IA',
   'meta.description': "Juan Restrepo, développeur full stack (React, Python) qui construit du logiciel avec des agents IA : Claude Code, serveurs MCP, orchestration d'agents et développement piloté par les spécifications.",
 
   'nav.about': 'Profil',
@@ -53,14 +53,14 @@ window.I18N_FR = {
   'ai.c4.d': "J'ai intégré Claude Code et MCP au quotidien de mon équipe : règles de projet partagées et revue de code automatisée.",
 
   'exp.title': "Où j'ai travaillé",
-  'exp.j1.role': "Développeur full stack · développement piloté par l'IA",
+  'exp.j1.role': "Développeur full stack IA",
   'exp.j1.date': "janv. 2026 – présent",
   'exp.context': "Olenergies est une startup française de l'énergie qui conçoit et fabrique des batteries et des centrales d'énergie mobiles : une alternative silencieuse et plus propre aux groupes électrogènes diesel. Elle vend aux entreprises, une dizaine de clients, qui les utilisent sur des événements et des chantiers, ou les proposent en location.",
   'exp.j1.b1': "Développement <span class='hl'>en autonomie des deux applications</span> qui pilotent les installations, avec des agents IA : la plateforme web où les clients suivent chaque installation en direct (carte, alarmes, prévisions de consommation) et l'écran tactile qui la contrôle sur site.",
   'exp.j1.b2': "Intégration des <span class='hl'>agents IA au quotidien de l'équipe</span> (Claude Code, MCP), avec des règles de projet partagées et une revue de code automatisée à chaque changement.",
   'exp.j1.b3': "Conception d'une <span class='hl'>architecture multi-sites</span> où chaque client ne voit que ses propres installations, et d'une <span class='hl'>passerelle sécurisée</span> pour y accéder à distance sans les exposer sur internet.",
   'exp.j1.b4': "Mise en place de <span class='hl'>pipelines CI/CD</span> : chaque changement est testé et déployé sans interruption.",
-  'exp.j2.role': "Alternant développeur full stack et IoT",
+  'exp.j2.role': "Développeur full stack & IoT (alternance)",
   'exp.j2.b1': "Création de <span class='hl'>tableaux de bord React</span> affichant en temps réel la production solaire, la charge des batteries et les alarmes.",
   'exp.j2.b2': "Développement du <span class='hl'>backend qui collecte les données des équipements</span> et les transmet en direct aux tableaux de bord (API REST, WebSocket).",
   'exp.j2.b3': "Participation à <span class='hl'>tout le cycle produit</span> : spécifications, tests sur bancs et sites réels, déploiement et maintenance.",
