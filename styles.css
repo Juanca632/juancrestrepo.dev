@@ -14,8 +14,8 @@
   --c-amber: #b45309;
   --c-blue: #2563eb;
   --c-coral: #d9480f;
-  --p-olen: #0e7490;
-  --p-movies: #a16207;
+  --p-olen: #c2410c;
+  --p-movies: #7c3aed;
   --p-monthwise: #2563eb;
   --p-steam: #1d4f7a;
   --shadow: 0 1px 2px rgb(16 40 36 / .04), 0 8px 24px rgb(16 40 36 / .06);
@@ -40,8 +40,8 @@
     --c-amber: #fbbf24;
     --c-blue: #60a5fa;
     --c-coral: #fb8a5c;
-    --p-olen: #22d3ee;
-    --p-movies: #facc15;
+    --p-olen: #eb7021;
+    --p-movies: #a78bfa;
     --p-monthwise: #60a5fa;
     --p-steam: #66c0f4;
     --shadow: none;
@@ -64,8 +64,8 @@
   --c-amber: #fbbf24;
   --c-blue: #60a5fa;
   --c-coral: #fb8a5c;
-  --p-olen: #22d3ee;
-  --p-movies: #facc15;
+  --p-olen: #eb7021;
+  --p-movies: #a78bfa;
   --p-monthwise: #60a5fa;
   --p-steam: #66c0f4;
   --shadow: none;
@@ -346,55 +346,115 @@ button.work-media:hover img { transform: scale(1.03); }
   background: rgb(0 0 0 / .6); color: #fff; backdrop-filter: blur(6px);
 }
 
-/* Device mockups: a laptop with the desktop screenshot and a phone in front with the mobile one.
-   Drawn in CSS, so they scale with the column and need no image of a device. */
-.work-media.devices {
-  aspect-ratio: 16 / 11; overflow: visible; border: 0; border-radius: 0; background: none; box-shadow: none;
+/* Device mockups, like the OlenPeps login: a MacBook and an iPhone drawn by devices.css (fixed px
+   sizes), laid out on a stage of fixed size that main.js scales to the column (--k). Dark frames,
+   layered warm shadows and a soft contact shadow under each device so they stand on one floor.
+   devices: laptop + phone in front on the left. trio: plus a tablet on the right. phones: two phones. */
+.work-media.devices, .work-media.phones {
+  --sw: 800; --sh: 494; --shadow-hsl: 28deg 25% 6%; --shade: .42;
+  aspect-ratio: var(--sw) / var(--sh); overflow: visible; border: 0; border-radius: 0; background: none; box-shadow: none;
 }
-.devices .laptop { position: absolute; left: 0; top: 2%; width: 84%; transition: transform .4s ease; }
-.laptop-screen {
-  display: block; padding: 2.4% 2.4% 3.2%; background: #0c0d10; border: 1px solid #2c2e33;
-  border-radius: 14px 14px 4px 4px;
-  box-shadow: 0 30px 60px -30px color-mix(in srgb, var(--p) 75%, transparent), var(--shadow);
-}
-.laptop-screen img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-radius: 3px; }
-.laptop-base {
-  position: relative; display: block; width: 116%; margin-left: -8%; height: 0; padding-bottom: 3.6%;
-  background: linear-gradient(#e3e5e9, #b4b8bf); border-radius: 2px 2px 14px 14px / 2px 2px 60% 60%;
-}
-.laptop-base::before {
-  content: ""; position: absolute; left: 50%; top: 0; width: 15%; height: 38%; transform: translateX(-50%);
-  background: #a4a8b0; border-radius: 0 0 8px 8px;
-}
-.devices .phone { position: absolute; right: 0; bottom: 0; width: 25%; }
-.work-media .phone {
-  display: block; padding: .7%;
-  background: #0c0d10; border: 1px solid #3a3d44; border-radius: 13% / 6%;
-  box-shadow: 0 24px 40px -18px rgb(0 0 0 / .45), 0 0 0 2px color-mix(in srgb, var(--surface) 40%, transparent);
-  transition: transform .4s ease;
-}
-.work-media .phone::before {
-  content: ""; position: absolute; top: 2.2%; left: 50%; width: 28%; height: 2.2%; transform: translateX(-50%);
-  background: #0c0d10; border-radius: 99px; z-index: 1;
-}
-.work-media .phone img { width: 100%; height: auto; aspect-ratio: 600 / 1298; object-fit: cover; object-position: top; border-radius: 11% / 5.1%; }
-button.work-media.devices:hover img { transform: none; }
-button.work-media.devices:hover .laptop { transform: translateY(-4px); }
-button.work-media.devices:hover .phone { transform: translateY(-8px); }
-.devices .shot-count { right: auto; left: 2%; bottom: 0; }
+.work-media.trio { --sw: 1080; --sh: 523; }
+.work-media.phones { --sw: 800; --sh: 550; }
+:root[data-theme="dark"] .work-media { --shade: .7; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .work-media { --shade: .7; } }
 
-@media (prefers-reduced-motion: reduce) { .devices .laptop, .devices .phone { transition: none; } }
-
-/* Mobile-only app: two phones side by side, the second one a little lower */
-.work-media.phones {
-  display: flex; justify-content: center; align-items: flex-start; gap: 6%;
-  aspect-ratio: 16 / 11; overflow: visible; border: 0; border-radius: 0; background: none; box-shadow: none;
+.stage {
+  position: absolute; left: 0; top: 0; display: block;
+  width: calc(var(--sw) * 1px); height: calc(var(--sh) * 1px);
+  transform: scale(var(--k, .3)); transform-origin: 0 0;
 }
-.phones .phone { position: relative; width: 29%; transition: transform .4s ease; }
-.phones .phone:nth-child(2) { margin-top: 5%; }
-button.work-media.phones:hover img { transform: none; }
-button.work-media.phones:hover .phone { transform: translateY(-6px); }
-.phones .shot-count { right: auto; left: 2%; bottom: 0; }
+:is(.stage, .viewer-device) .device-screen { object-fit: cover; object-position: top; }
+.stage .dev-laptop, .stage .dev-phone, .stage .dev-tablet { position: absolute; transition: translate .4s ease; }
+
+/* Prefixed with .stage: devices.css sets .device { transform: scale(1) } */
+.stage .dev-laptop { top: 0; left: 60px; }
+.trio .stage .dev-laptop { left: 37px; }
+.dev-laptop .device-frame { box-shadow: inset 0 0 0 2px #3a3a3c; }
+.dev-laptop .device-power { background: #d5d7d9 linear-gradient(to bottom, #e2e3e4, #c8cacb); }
+/* The menu bar beside the notch, in the colour of the page's top (--menubar), the page starts under it */
+.dev-laptop .device-screen { border-top: 14px solid var(--menubar, #000); background-color: var(--menubar, #000); }
+/* devices.css puts the notch 2px under the bezel (at the screen's border): attached to the bezel instead,
+   reaching 2px into it (same colour) so no line of the menu bar shows through at small scales; its
+   rounded corners (::before, ::after) where it meets the bezel */
+.dev-laptop .device-header { top: 7px; height: 16px; }
+.dev-laptop .device-header::before, .dev-laptop .device-header::after { top: 2px; }
+
+.stage .dev-phone { z-index: 3; left: 0; bottom: 0; transform-origin: bottom left; transform: scale(.42); }
+.phones .stage .dev-phone { top: 0; bottom: auto; left: 122px; transform-origin: top left; transform: scale(.58); }
+.phones .stage .dev-phone + .dev-phone { top: 40px; left: 430px; }
+.dev-phone .device-frame {
+  border-color: #2b2a28;
+  box-shadow:
+    inset 0 0 0 6px #3d3b38,
+    40px 20px 80px hsl(var(--shadow-hsl) / calc(var(--shade) * .8)),
+    0 2px 2px hsl(var(--shadow-hsl) / .2),
+    0 6px 6px hsl(var(--shadow-hsl) / .18),
+    0 12px 12px hsl(var(--shadow-hsl) / .16),
+    0 24px 24px hsl(var(--shadow-hsl) / .14),
+    0 48px 48px hsl(var(--shadow-hsl) / .12);
+}
+.dev-phone .device-btns,
+.dev-phone .device-btns::after,
+.dev-phone .device-btns::before,
+.dev-phone .device-power { background: #3d3b38; }
+
+/* The tablet, iPad-like and landscape, its screen the console's shape (1024x600) */
+.stage .dev-tablet { z-index: 2; right: 0; bottom: 0; width: 488px; padding: 13px; border-radius: 18px; }
+.dev-tablet {
+  position: relative; display: block; background: #0b0b0b; border: 1px solid #2b2a28;
+  box-shadow:
+    inset 0 0 0 3px #3d3b38,
+    -10px 6px 22px hsl(var(--shadow-hsl) / calc(var(--shade) * .7)),
+    0 2px 4px hsl(var(--shadow-hsl) / .25),
+    0 8px 16px hsl(var(--shadow-hsl) / .18),
+    0 20px 36px hsl(var(--shadow-hsl) / .14);
+}
+.dev-tablet-camera {
+  position: absolute; top: 50%; left: 6px; width: 6px; height: 6px; margin-top: -3px;
+  border-radius: 50%; background: #2a2a2a;
+}
+:is(.work-media, .viewer) .dev-tablet img { width: 100%; height: auto; aspect-ratio: 1024 / 600; object-fit: cover; border-radius: 3px; }
+
+/* Contact shadows: a near-invisible strip whose blur spreads into a soft pool under each device */
+.stage .dev-laptop::after, .stage .dev-phone::after, .stage .dev-tablet::after {
+  content: ""; position: absolute; z-index: -1; left: 12%; right: 12%; bottom: 2px; height: 2px;
+  border-radius: 50%; box-shadow: 0 2px 16px 9px hsl(var(--shadow-hsl) / var(--shade));
+}
+.stage .dev-laptop::after { left: 4%; right: 4%; bottom: 6px; box-shadow: 0 4px 26px 13px hsl(var(--shadow-hsl) / var(--shade)); }
+.stage .dev-phone::after { left: 10%; right: 10%; bottom: 6px; height: 6px; box-shadow: 0 6px 60px 34px hsl(var(--shadow-hsl) / var(--shade)); }
+
+/* Phones without the bar in their screenshot get the iOS one drawn here, like OlenPeps': a 54pt
+   status bar beside the Dynamic Island (the page starts under it) and the home indicator.
+   safe-bottom: the app's own bottom bar sits above the 34pt safe area, so the shot is anchored at the bottom. */
+.device-screen.ios-screen { display: flex; flex-direction: column; overflow: hidden; background: var(--bar); color: #000; }
+.ios-screen.dark { color: #fff; }
+.ios-status {
+  flex: 0 0 54px; display: flex; align-items: center; justify-content: space-between; padding: 2px 26px 0 50px;
+  font: 600 17px/1 Inter, -apple-system, "SF Pro Text", var(--font-body); letter-spacing: -.01em;
+}
+.ios-icons { fill: currentColor; }
+:is(.work-media, .viewer) .ios-screen > img { flex: 1 1 0; min-height: 0; width: 100%; height: auto; object-fit: cover; object-position: top; border-radius: 0; }
+.work-media .ios-screen.safe-bottom img { object-position: bottom; }
+.stage .ios-screen.safe-bottom { padding-bottom: 34px; }
+.ios-home {
+  position: absolute; left: 50%; bottom: 8px; width: 134px; height: 5px; margin-left: -67px;
+  border-radius: 3px; background: currentColor; z-index: 1;
+}
+
+/* Bottom bar (viewer phones): the app's own bar, cut from the bottom of the screenshot, stays above
+   the 34pt safe area as on an iPhone; the page scrolls under it */
+.ios-tabbar { position: absolute; left: 0; right: 0; bottom: 34px; background-repeat: no-repeat; background-position: bottom; background-size: 100% auto; }
+.ios-safe { flex: 0 0 34px; background: var(--safe); }
+
+button.work-media.devices:hover img, button.work-media.phones:hover img { transform: none; }
+button.work-media:hover .dev-laptop { translate: 0 -10px; }
+button.work-media:hover .dev-tablet { translate: 0 -14px; }
+button.work-media:hover .dev-phone { translate: 0 -20px; }
+.devices .shot-count, .phones .shot-count { right: 0; bottom: 0; }
+.trio .shot-count { top: 0; bottom: auto; }
+
+@media (prefers-reduced-motion: reduce) { .stage .dev-laptop, .stage .dev-phone, .stage .dev-tablet { transition: none; } }
 
 /* Placeholder cover until a project has screenshots */
 .work-media.cover {
@@ -476,14 +536,16 @@ html:has(.viewer[open]) { overflow: hidden; }
 .viewer-prev { left: 8px; }
 .viewer-next { right: 8px; }
 .viewer-figure { margin: 0; min-width: 0; min-height: 0; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
-.viewer-frame {
+.viewer-frame { position: relative; transition: opacity .25s ease, transform .25s ease; }
+/* Each screenshot in its device, drawn at its fixed devices.css size and scaled to fit by main.js */
+.viewer-device { position: absolute; left: 0; top: 0; transform-origin: 0 0; --shadow-hsl: 0deg 0% 0%; --shade: .7; }
+.viewer-device .dev-tablet { width: 740px; padding: 20px; border-radius: 27px; }
+.viewer-device .dev-tablet-camera { left: 8px; width: 8px; height: 8px; margin-top: -4px; }
+.viewer-frame.is-plain {
   padding: 10px; background: #0c0d10; border: 1px solid #34373e; border-radius: 16px;
   box-shadow: 0 40px 80px -30px rgb(0 0 0 / .8);
-  transition: opacity .25s ease, transform .25s ease;
 }
-.viewer-frame img { display: block; max-width: min(1100px, 78vw); max-height: calc(100dvh - 250px); width: auto; height: auto; border-radius: 6px; }
-.viewer-frame.is-phone { padding: 6px; border-radius: 34px; }
-.viewer-frame.is-phone img { border-radius: 28px; max-height: calc(100dvh - 230px); }
+.viewer-frame.is-plain > img { display: block; max-width: min(1100px, 78vw); max-height: calc(100dvh - 250px); width: auto; height: auto; border-radius: 6px; }
 .viewer-frame.is-loading { opacity: 0; transform: scale(.98); }
 .viewer-figure figcaption { max-width: 60ch; text-align: center; font-size: .95rem; line-height: 1.5; color: rgb(255 255 255 / .82); }
 .viewer-thumbs { display: flex; gap: 8px; max-width: 100%; overflow-x: auto; padding: 4px; scrollbar-width: none; }
@@ -498,9 +560,8 @@ html:has(.viewer[open]) { overflow: hidden; }
 @media (max-width: 700px) {
   .viewer { padding: 12px 8px; }
   .viewer-arrow { display: none; }
-  .viewer-frame { padding: 5px; border-radius: 10px; }
-  .viewer-frame img { max-width: 94vw; max-height: calc(100dvh - 230px); }
-  .viewer-frame.is-phone img { max-height: calc(100dvh - 220px); }
+  .viewer-frame.is-plain { padding: 5px; border-radius: 10px; }
+  .viewer-frame.is-plain > img { max-width: 94vw; max-height: calc(100dvh - 230px); }
 }
 @media (prefers-reduced-motion: reduce) { .viewer-frame, .viewer-btn { transition: none; } }
 

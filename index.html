@@ -29,6 +29,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+  <link rel="stylesheet" href="devices.css">
   <link rel="stylesheet" href="styles.css">
   <script>
     // Apply the saved theme before paint to avoid a flash
@@ -130,23 +131,28 @@
         One <article class="work"> per project; rows alternate image left / right.
         Screenshots: the first one is the cover, all of them open in the viewer (main.js).
         No screenshots yet: use a <div class="work-media cover"> instead.
+        In the viewer each screenshot opens in its device (main.js): portrait in the iPhone, landscape in the
+        MacBook; data-device="tablet" for the tablet, data-bar="<px>" for an app's bottom bar on a phone.
         Add the French text of every data-i18n key in i18n.js.
       -->
       <div class="works">
 
         <article class="work olen">
-          <button class="work-media devices" data-shots aria-label="OlenPeps: view 6 screenshots" data-i18n-aria="p4.view">
-            <span class="laptop"><span class="laptop-screen"><img src="assets/projects/covers/olenpeps-live.jpg" alt="" loading="lazy" width="800" height="500"></span><span class="laptop-base"></span></span>
-            <span class="phone"><img src="assets/projects/covers/olenpeps-mobile.jpg" alt="" loading="lazy" width="400" height="865"></span>
+          <button class="work-media devices trio" data-shots aria-label="OlenPeps: view 6 screenshots" data-i18n-aria="p4.view">
+            <span class="stage">
+              <span class="dev-laptop device device-macbook-pro"><span class="device-frame"><img class="device-screen" src="assets/projects/olenpeps-devices/desktop-dash-dark-1440.webp" srcset="assets/projects/olenpeps-devices/desktop-dash-dark-1440.webp 1440w, assets/projects/olenpeps-devices/desktop-dash-dark-2880.webp 2880w" sizes="340px" alt="" loading="lazy" decoding="async" width="600" height="375"></span><span class="device-header"></span><span class="device-power"></span></span>
+              <span class="dev-tablet"><span class="dev-tablet-camera"></span><img src="assets/projects/olenpeps-devices/console-1024.webp" srcset="assets/projects/olenpeps-devices/console-1024.webp 1024w, assets/projects/olenpeps-devices/console-2048.webp 2048w" sizes="280px" alt="" loading="lazy" decoding="async" width="1024" height="600"></span>
+              <span class="dev-phone device device-iphone-14-pro"><span class="device-frame"><img class="device-screen" src="assets/projects/olenpeps-devices/phone-home-dark-390.webp" srcset="assets/projects/olenpeps-devices/phone-home-dark-390.webp 390w, assets/projects/olenpeps-devices/phone-home-dark-1170.webp 1170w" sizes="100px" alt="" loading="lazy" decoding="async" width="390" height="830"></span><span class="device-stripe"></span><span class="device-header"></span><span class="device-sensors"></span><span class="device-btns"></span><span class="device-power"></span><span class="device-home"></span></span>
+            </span>
             <span class="shot-count"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="m21 16-5-5-9 8"/></svg>6</span>
           </button>
             <div class="shots" hidden>
-              <figure><img src="assets/projects/olenpeps-live.jpg" alt="Live view of a mobile power installation near Marseille" data-i18n-alt="p4.a1" loading="lazy"><figcaption data-i18n="p4.s1">Live view of one installation: grid input, solar, battery and output, updated in real time.</figcaption></figure>
-              <figure><img src="assets/projects/olenpeps-console.jpg" alt="The installation's touchscreen opened remotely from the browser" data-i18n-alt="p4.a2" loading="lazy"><figcaption data-i18n="p4.s2">Remote console: the installation's own touchscreen, opened from the browser.</figcaption></figure>
-              <figure><img src="assets/projects/olenpeps-home.jpg" alt="Home page with every installation and its status" data-i18n-alt="p4.a3" loading="lazy"><figcaption data-i18n="p4.s3">Home: every installation with its status, alarms and availability.</figcaption></figure>
-              <figure><img src="assets/projects/olenpeps-mobile.jpg" alt="Live view of an installation on a phone" data-i18n-alt="p4.a4" loading="lazy"><figcaption data-i18n="p4.s4">The same live view on a phone.</figcaption></figure>
-              <figure><img src="assets/projects/olenpeps-stats.jpg" alt="Statistics page with production per installation" data-i18n-alt="p4.a5" loading="lazy"><figcaption data-i18n="p4.s5">Statistics: solar production, grid independence and CO₂ avoided per installation.</figcaption></figure>
-              <figure><img src="assets/projects/olenpeps-alarms.jpg" alt="Alarm history chart and log" data-i18n-alt="p4.a6" loading="lazy"><figcaption data-i18n="p4.s6">Alarm log with history, active alarms and average resolution time.</figcaption></figure>
+              <figure><img src="assets/projects/olenpeps-live.jpg" alt="Live view of a mobile power installation near Marseille" data-i18n-alt="p4.a1" loading="lazy"><figcaption data-i18n="p4.s1">Live view of one installation: grid input, solar, battery and consumption, with today's production curve.</figcaption></figure>
+              <figure><img src="assets/projects/olenpeps-console.jpg" data-device="tablet" alt="The installation's touchscreen opened remotely from the browser" data-i18n-alt="p4.a2" loading="lazy"><figcaption data-i18n="p4.s2">Remote console: the installation's own touchscreen, opened from the browser.</figcaption></figure>
+              <figure><img src="assets/projects/olenpeps-home.jpg" alt="Home page with the day's summary and every installation on a map" data-i18n-alt="p4.a3" loading="lazy"><figcaption data-i18n="p4.s3">Home: the day's summary and every installation with its status and alarms, on a map.</figcaption></figure>
+              <figure><img src="assets/projects/olenpeps-mobile.jpg" data-bar="100" alt="Live view of an installation on a phone" data-i18n-alt="p4.a4" loading="lazy"><figcaption data-i18n="p4.s4">The same live view on a phone.</figcaption></figure>
+              <figure><img src="assets/projects/olenpeps-stats.jpg" alt="Statistics page with production and consumption per day" data-i18n-alt="p4.a5" loading="lazy"><figcaption data-i18n="p4.s5">Statistics: production, consumption, self-sufficiency and CO₂ avoided, day by day and per installation.</figcaption></figure>
+              <figure><img src="assets/projects/olenpeps-alarms.jpg" alt="Alarms-per-day chart and the alarm log" data-i18n-alt="p4.a6" loading="lazy"><figcaption data-i18n="p4.s6">Alarm log: the alarm in progress, alarms per day and their average duration.</figcaption></figure>
             </div>
           <div class="work-text">
             <p class="work-meta" data-i18n="p4.meta">Olenergies · 2023 – now</p>
@@ -154,7 +160,7 @@
             <p class="work-desc" data-i18n="p4.desc">Lets businesses follow their solar and battery installations from anywhere: battery level, solar production and alarms, live on a map. They can even open an installation's own touchscreen from the browser, as if they were standing next to it.</p>
             <ul class="work-tags"><li>React</li><li>TypeScript</li><li>FastAPI</li><li>WebSocket</li><li>Azure</li></ul>
             <div class="work-links">
-              <a class="demo" data-goatcounter-click="olenpeps-demo" href="https://olenpeps.com" target="_blank" rel="noopener" data-i18n="projects.tryDemo">Try the demo ↗</a>
+              <a class="demo" data-goatcounter-click="olenpeps-demo" href="https://staging.olenpeps.com" target="_blank" rel="noopener" data-i18n="projects.tryDemo">Try the demo ↗</a>
               <span class="private-note" data-i18n="projects.private">Private code</span>
             </div>
           </div>
@@ -162,16 +168,18 @@
 
         <article class="work movies">
           <button class="work-media devices" data-shots aria-label="MoviesApp: view 6 screenshots" data-i18n-aria="p2.view">
-            <span class="laptop"><span class="laptop-screen"><img src="assets/projects/covers/movies-assistant.jpg" alt="" loading="lazy" width="800" height="500"></span><span class="laptop-base"></span></span>
-            <span class="phone"><img src="assets/projects/covers/movies-mobile-ai.jpg" alt="" loading="lazy" width="400" height="865"></span>
+            <span class="stage">
+              <span class="dev-laptop device device-macbook-pro"><span class="device-frame"><img class="device-screen" src="assets/projects/covers/movies-assistant.jpg" alt="" loading="lazy" decoding="async" width="800" height="500"></span><span class="device-header"></span><span class="device-power"></span></span>
+              <span class="dev-phone device device-iphone-14-pro"><span class="device-frame"><span class="device-screen ios-screen dark safe-bottom" style="--bar: #16151a"><span class="ios-status"><span class="ios-time">9:41</span><svg class="ios-icons" viewBox="0 0 74 13" width="74" height="13" aria-hidden="true"><rect x="0" y="8" width="3" height="4.5" rx="1"/><rect x="4.7" y="6" width="3" height="6.5" rx="1"/><rect x="9.4" y="3.5" width="3" height="9" rx="1"/><rect x="14.1" y="1" width="3" height="11.5" rx="1"/><path d="M23 4.9a10.3 10.3 0 0 1 14.4 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M25.6 7.7a6.6 6.6 0 0 1 9.2 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M30.2 12.4 28.1 10.3a3 3 0 0 1 4.2 0Z"/><rect x="45" y="1" width="24" height="11.5" rx="3.6" fill="none" stroke="currentColor" stroke-opacity=".4"/><rect x="47" y="3" width="20" height="7.5" rx="2"/><path d="M70.5 4.6v4.3c.9-.3 1.5-1.2 1.5-2.15s-.6-1.85-1.5-2.15Z" fill-opacity=".45"/></svg></span><img src="assets/projects/covers/movies-mobile-ai.jpg" alt="" loading="lazy" decoding="async" width="400" height="865"><span class="ios-home"></span></span></span><span class="device-stripe"></span><span class="device-header"></span><span class="device-sensors"></span><span class="device-btns"></span><span class="device-power"></span><span class="device-home"></span></span>
+            </span>
             <span class="shot-count"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="m21 16-5-5-9 8"/></svg>6</span>
           </button>
             <div class="shots" hidden>
               <figure><img src="assets/projects/movies-assistant.jpg" alt="The AI assistant recommending something funny and short" data-i18n-alt="p2.a1" loading="lazy"><figcaption data-i18n="p2.s1">Ask AI: each pick comes with why it fits and where to stream it.</figcaption></figure>
-              <figure><img src="assets/projects/movies-mobile-ai.jpg" alt="The AI assistant on a phone" data-i18n-alt="p2.a2" loading="lazy"><figcaption data-i18n="p2.s2">The assistant on a phone.</figcaption></figure>
+              <figure><img src="assets/projects/movies-mobile-ai.jpg" data-bar="110" alt="The AI assistant on a phone" data-i18n-alt="p2.a2" loading="lazy"><figcaption data-i18n="p2.s2">The assistant on a phone.</figcaption></figure>
               <figure><img src="assets/projects/movies-home.jpg" alt="MoviesApp home page" data-i18n-alt="p2.a3" loading="lazy"><figcaption data-i18n="p2.s3">Home page with the featured title and rows of posters.</figcaption></figure>
               <figure><img src="assets/projects/movies-detail.jpg" alt="Project Hail Mary detail page" data-i18n-alt="p2.a4" loading="lazy"><figcaption data-i18n="p2.s4">Detail page: critic scores, awards and where to watch.</figcaption></figure>
-              <figure><img src="assets/projects/movies-mobile.jpg" alt="MoviesApp home page on a phone" data-i18n-alt="p2.a5" loading="lazy"><figcaption data-i18n="p2.s5">Home page on a phone, with the bottom navigation.</figcaption></figure>
+              <figure><img src="assets/projects/movies-mobile.jpg" data-bar="100" alt="MoviesApp home page on a phone" data-i18n-alt="p2.a5" loading="lazy"><figcaption data-i18n="p2.s5">Home page on a phone, with the bottom navigation.</figcaption></figure>
               <figure><img src="assets/projects/movies-for-you.jpg" alt="Home rows with AI picks based on the user's favorites" data-i18n-alt="p2.a6" loading="lazy"><figcaption data-i18n="p2.s6">Picked for you by AI, from your favorites.</figcaption></figure>
             </div>
           <div class="work-text">
@@ -188,8 +196,10 @@
 
         <article class="work monthwise">
           <button class="work-media phones" data-shots aria-label="Monthwise: view 5 screenshots" data-i18n-aria="p1.view">
-            <span class="phone"><img src="assets/projects/covers/monthwise-home.jpg" alt="" loading="lazy" width="400" height="865"></span>
-            <span class="phone"><img src="assets/projects/covers/monthwise-insights.jpg" alt="" loading="lazy" width="400" height="865"></span>
+            <span class="stage">
+              <span class="dev-phone device device-iphone-14-pro"><span class="device-frame"><span class="device-screen ios-screen light" style="--bar: #f2f3f7"><span class="ios-status"><span class="ios-time">9:41</span><svg class="ios-icons" viewBox="0 0 74 13" width="74" height="13" aria-hidden="true"><rect x="0" y="8" width="3" height="4.5" rx="1"/><rect x="4.7" y="6" width="3" height="6.5" rx="1"/><rect x="9.4" y="3.5" width="3" height="9" rx="1"/><rect x="14.1" y="1" width="3" height="11.5" rx="1"/><path d="M23 4.9a10.3 10.3 0 0 1 14.4 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M25.6 7.7a6.6 6.6 0 0 1 9.2 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M30.2 12.4 28.1 10.3a3 3 0 0 1 4.2 0Z"/><rect x="45" y="1" width="24" height="11.5" rx="3.6" fill="none" stroke="currentColor" stroke-opacity=".4"/><rect x="47" y="3" width="20" height="7.5" rx="2"/><path d="M70.5 4.6v4.3c.9-.3 1.5-1.2 1.5-2.15s-.6-1.85-1.5-2.15Z" fill-opacity=".45"/></svg></span><img src="assets/projects/covers/monthwise-home.jpg" alt="" loading="lazy" decoding="async" width="400" height="865"><span class="ios-home"></span></span></span><span class="device-stripe"></span><span class="device-header"></span><span class="device-sensors"></span><span class="device-btns"></span><span class="device-power"></span><span class="device-home"></span></span>
+              <span class="dev-phone device device-iphone-14-pro"><span class="device-frame"><span class="device-screen ios-screen light" style="--bar: #f2f3f7"><span class="ios-status"><span class="ios-time">9:41</span><svg class="ios-icons" viewBox="0 0 74 13" width="74" height="13" aria-hidden="true"><rect x="0" y="8" width="3" height="4.5" rx="1"/><rect x="4.7" y="6" width="3" height="6.5" rx="1"/><rect x="9.4" y="3.5" width="3" height="9" rx="1"/><rect x="14.1" y="1" width="3" height="11.5" rx="1"/><path d="M23 4.9a10.3 10.3 0 0 1 14.4 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M25.6 7.7a6.6 6.6 0 0 1 9.2 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M30.2 12.4 28.1 10.3a3 3 0 0 1 4.2 0Z"/><rect x="45" y="1" width="24" height="11.5" rx="3.6" fill="none" stroke="currentColor" stroke-opacity=".4"/><rect x="47" y="3" width="20" height="7.5" rx="2"/><path d="M70.5 4.6v4.3c.9-.3 1.5-1.2 1.5-2.15s-.6-1.85-1.5-2.15Z" fill-opacity=".45"/></svg></span><img src="assets/projects/covers/monthwise-insights.jpg" alt="" loading="lazy" decoding="async" width="400" height="865"><span class="ios-home"></span></span></span><span class="device-stripe"></span><span class="device-header"></span><span class="device-sensors"></span><span class="device-btns"></span><span class="device-power"></span><span class="device-home"></span></span>
+            </span>
             <span class="shot-count"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="m21 16-5-5-9 8"/></svg>5</span>
           </button>
             <div class="shots" hidden>
@@ -212,8 +222,10 @@
 
         <article class="work steam">
           <button class="work-media devices" data-shots aria-label="Steam Backlog Coach: view 4 screenshots" data-i18n-aria="p3.view">
-            <span class="laptop"><span class="laptop-screen"><img src="assets/projects/covers/steam-ai.jpg" alt="" loading="lazy" width="800" height="500"></span><span class="laptop-base"></span></span>
-            <span class="phone"><img src="assets/projects/covers/steam-mobile-ai.jpg" alt="" loading="lazy" width="400" height="865"></span>
+            <span class="stage">
+              <span class="dev-laptop device device-macbook-pro" style="--menubar: #fdfcfa"><span class="device-frame"><img class="device-screen" src="assets/projects/covers/steam-ai.jpg" alt="" loading="lazy" decoding="async" width="800" height="500"></span><span class="device-header"></span><span class="device-power"></span></span>
+              <span class="dev-phone device device-iphone-14-pro"><span class="device-frame"><span class="device-screen ios-screen light" style="--bar: #fdfcfa"><span class="ios-status"><span class="ios-time">9:41</span><svg class="ios-icons" viewBox="0 0 74 13" width="74" height="13" aria-hidden="true"><rect x="0" y="8" width="3" height="4.5" rx="1"/><rect x="4.7" y="6" width="3" height="6.5" rx="1"/><rect x="9.4" y="3.5" width="3" height="9" rx="1"/><rect x="14.1" y="1" width="3" height="11.5" rx="1"/><path d="M23 4.9a10.3 10.3 0 0 1 14.4 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M25.6 7.7a6.6 6.6 0 0 1 9.2 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M30.2 12.4 28.1 10.3a3 3 0 0 1 4.2 0Z"/><rect x="45" y="1" width="24" height="11.5" rx="3.6" fill="none" stroke="currentColor" stroke-opacity=".4"/><rect x="47" y="3" width="20" height="7.5" rx="2"/><path d="M70.5 4.6v4.3c.9-.3 1.5-1.2 1.5-2.15s-.6-1.85-1.5-2.15Z" fill-opacity=".45"/></svg></span><img src="assets/projects/covers/steam-mobile-ai.jpg" alt="" loading="lazy" decoding="async" width="400" height="865"><span class="ios-home"></span></span></span><span class="device-stripe"></span><span class="device-header"></span><span class="device-sensors"></span><span class="device-btns"></span><span class="device-power"></span><span class="device-home"></span></span>
+            </span>
             <span class="shot-count"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="m21 16-5-5-9 8"/></svg>4</span>
           </button>
             <div class="shots" hidden>

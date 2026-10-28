@@ -3,7 +3,6 @@ const root = document.documentElement;
 // ---------- Screenshot viewer: each project cover opens all its screenshots ----------
 const viewer = document.getElementById('viewer');
 const viewerFrame = viewer.querySelector('.viewer-frame');
-const viewerImg = viewer.querySelector('.viewer-frame img');
 const viewerCaption = viewer.querySelector('figcaption');
 const viewerCount = viewer.querySelector('.viewer-count');
 const viewerPrev = viewer.querySelector('.viewer-prev');
@@ -11,21 +10,83 @@ const viewerNext = viewer.querySelector('.viewer-next');
 const viewerThumbs = viewer.querySelector('.viewer-thumbs');
 let shots = [];
 let shotIndex = 0;
+let loadToken = 0;
 
-// Portrait screenshots get the phone frame, landscape ones the screen frame
-viewerImg.addEventListener('load', () => {
-  viewerFrame.classList.toggle('is-phone', viewerImg.naturalHeight > viewerImg.naturalWidth);
-  viewerFrame.classList.remove('is-loading');
-});
-viewerImg.addEventListener('error', () => viewerFrame.classList.remove('is-loading'));
+// Each screenshot opens in its device, like the covers: a portrait one in the iPhone (under the iOS
+// status bar, with the home indicator), a landscape one in the MacBook (in a plain frame on narrow
+// screens), the console (data-device="tablet") in the tablet. data-bar: the height in image pixels of
+// the app's bottom bar, kept above the iPhone's safe area.
+const narrow = matchMedia('(max-width: 700px)');
+const iosIcons = document.querySelector('.ios-icons').outerHTML;
+
+// Colour of the screenshot's edge (top or bottom row), for the status or menu bar and the safe area
+function edgeColor(pic, y) {
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = 1;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(pic, 2, y, 1, 1, 0, 0, 1, 1);
+  const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+  return { css: `rgb(${r} ${g} ${b})`, dark: r * .3 + g * .59 + b * .11 < 128 };
+}
+
+function deviceHTML(kind, pic, src, alt, bar) {
+  const img = (cls = '') => `<img${cls && ` class="${cls}"`} src="${src}" alt="${alt.replace(/"/g, '&quot;')}">`;
+  if (kind === 'tablet') return `<span class="dev-tablet"><span class="dev-tablet-camera"></span>${img()}</span>`;
+  if (kind === 'laptop') {
+    return `<span class="dev-laptop device device-macbook-pro" style="--menubar: ${edgeColor(pic, 2).css}"><span class="device-frame">${img('device-screen')}</span>`
+      + '<span class="device-header"></span><span class="device-power"></span></span>';
+  }
+  const top = edgeColor(pic, 2);
+  const bottom = edgeColor(pic, pic.naturalHeight - 3);
+  // The screen is 390 px wide: the bar's height there
+  const tabbar = bar ? `<span class="ios-tabbar" style="height: ${bar * 390 / pic.naturalWidth}px; background-image: url('${src}')"></span><span class="ios-safe"></span>` : '';
+  return `<span class="dev-phone device device-iphone-14-pro"><span class="device-frame">`
+    + `<span class="device-screen ios-screen ${top.dark ? 'dark' : 'light'}" style="--bar: ${top.css}; --safe: ${bottom.css}">`
+    + `<span class="ios-status"><span class="ios-time">9:41</span>${iosIcons}</span>${img()}${tabbar}<span class="ios-home"></span></span></span>`
+    + '<span class="device-stripe"></span><span class="device-header"></span><span class="device-sensors"></span>'
+    + '<span class="device-btns"></span><span class="device-power"></span><span class="device-home"></span></span>';
+}
+
+// Scale the device to the space left by the counter, the caption and the thumbnails
+function fitDevice() {
+  const wrap = viewerFrame.querySelector('.viewer-device');
+  if (!wrap) return;
+  const device = wrap.firstElementChild;
+  const phone = device.classList.contains('dev-phone');
+  const maxW = Math.min(1100, innerWidth * (narrow.matches ? .94 : .78));
+  const maxH = innerHeight - (phone ? 230 : 250);
+  const k = Math.min(maxW / device.offsetWidth, maxH / device.offsetHeight);
+  wrap.style.transform = `scale(${k})`;
+  viewerFrame.style.width = `${device.offsetWidth * k}px`;
+  viewerFrame.style.height = `${device.offsetHeight * k}px`;
+}
+addEventListener('resize', () => { if (viewer.open) fitDevice(); });
+
+function renderShot(pic, img) {
+  const src = img.getAttribute('src');
+  let kind = img.dataset.device || (pic.naturalHeight > pic.naturalWidth ? 'phone' : 'laptop');
+  if (kind === 'laptop' && narrow.matches) kind = 'plain';
+  viewerFrame.className = `viewer-frame is-${kind}`;
+  viewerFrame.style.width = viewerFrame.style.height = '';
+  viewerFrame.innerHTML = kind === 'plain'
+    ? `<img src="${src}" alt="">`
+    : `<span class="viewer-device">${deviceHTML(kind, pic, src, img.alt, +img.dataset.bar || 0)}</span>`;
+  if (kind === 'plain') viewerFrame.querySelector('img').alt = img.alt;
+  fitDevice();
+}
 
 function showShot(i) {
   shotIndex = (i + shots.length) % shots.length;
   const fig = shots[shotIndex];
   const img = fig.querySelector('img');
+  const token = ++loadToken;
   viewerFrame.classList.add('is-loading');
-  viewerImg.src = img.getAttribute('src');
-  viewerImg.alt = img.alt;
+  const pic = new Image();
+  pic.src = img.getAttribute('src');
+  pic.decode().catch(() => {}).then(() => {
+    if (token !== loadToken) return;
+    renderShot(pic, img);
+  });
   viewerCaption.innerHTML = fig.querySelector('figcaption').innerHTML;
   viewerCount.textContent = `${shotIndex + 1} / ${shots.length}`;
   viewerThumbs.querySelectorAll('button').forEach((b, n) => {
@@ -146,6 +207,17 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   root.dataset.theme = next;
   try { localStorage.setItem('theme', next); } catch (e) {}
   updateThemeLabel(lang);
+});
+
+// ---------- Device mockups: scale each fixed-size stage to its column ----------
+// Fitted right away too, so the unscaled stage never widens the page on phones
+function fitStage(media) {
+  media.style.setProperty('--k', media.clientWidth / media.querySelector('.stage').offsetWidth);
+}
+const fitStages = new ResizeObserver((entries) => entries.forEach(({ target }) => fitStage(target)));
+document.querySelectorAll('.work-media .stage').forEach((stage) => {
+  fitStage(stage.parentElement);
+  fitStages.observe(stage.parentElement);
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();
