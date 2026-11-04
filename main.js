@@ -191,9 +191,9 @@ langToggle.addEventListener('click', () => {
   if (url.searchParams.has('lang')) { url.searchParams.delete('lang'); history.replaceState(null, '', url); }
 });
 
-// ---------- Theme: remembers the visitor's choice; otherwise follows the system ----------
+// ---------- Theme: remembers the visitor's choice; light by default ----------
 function currentTheme() {
-  return root.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  return root.dataset.theme || 'light';
 }
 function updateThemeLabel(l) {
   const toDark = currentTheme() === 'light';
