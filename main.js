@@ -29,8 +29,17 @@ function edgeColor(pic, y) {
   return { css: `rgb(${r} ${g} ${b})`, dark: r * .3 + g * .59 + b * .11 < 128 };
 }
 
-function deviceHTML(kind, pic, src, alt, bar) {
-  const img = (cls = '') => `<img${cls && ` class="${cls}"`} src="${src}" alt="${alt.replace(/"/g, '&quot;')}">`;
+// A demo video (data-video on the poster img) plays muted and looped in place of the screenshot
+function screenHTML(src, alt, video, cls = '') {
+  const c = cls && ` class="${cls}"`;
+  const label = alt.replace(/"/g, '&quot;');
+  return video
+    ? `<video${c} src="${video}" poster="${src}" aria-label="${label}" autoplay muted loop playsinline preload="auto"></video>`
+    : `<img${c} src="${src}" alt="${label}">`;
+}
+
+function deviceHTML(kind, pic, src, alt, bar, video) {
+  const img = (cls = '') => screenHTML(src, alt, video, cls);
   if (kind === 'tablet') return `<span class="dev-tablet"><span class="dev-tablet-camera"></span>${img()}</span>`;
   if (kind === 'laptop') {
     return `<span class="dev-laptop device device-macbook-pro" style="--menubar: ${edgeColor(pic, 2).css}"><span class="device-frame">${img('device-screen')}</span>`
@@ -68,10 +77,12 @@ function renderShot(pic, img) {
   if (kind === 'laptop' && narrow.matches) kind = 'plain';
   viewerFrame.className = `viewer-frame is-${kind}`;
   viewerFrame.style.width = viewerFrame.style.height = '';
+  const video = img.dataset.video;
   viewerFrame.innerHTML = kind === 'plain'
-    ? `<img src="${src}" alt="">`
-    : `<span class="viewer-device">${deviceHTML(kind, pic, src, img.alt, +img.dataset.bar || 0)}</span>`;
-  if (kind === 'plain') viewerFrame.querySelector('img').alt = img.alt;
+    ? screenHTML(src, img.alt, video)
+    : `<span class="viewer-device">${deviceHTML(kind, pic, src, img.alt, +img.dataset.bar || 0, video)}</span>`;
+  // Some browsers ignore autoplay on media inserted with innerHTML
+  viewerFrame.querySelector('video')?.play().catch(() => {});
   fitDevice();
 }
 
@@ -101,6 +112,7 @@ function buildThumbs() {
     const img = fig.querySelector('img');
     b.setAttribute('aria-label', img.alt);
     b.innerHTML = `<img src="${img.getAttribute('src')}" alt="">`;
+    if (img.dataset.video) b.classList.add('is-video');
     b.addEventListener('click', () => showShot(n));
     return b;
   }));
@@ -118,6 +130,8 @@ document.querySelectorAll('[data-shots]').forEach((button) => {
 viewerPrev.addEventListener('click', () => showShot(shotIndex - 1));
 viewerNext.addEventListener('click', () => showShot(shotIndex + 1));
 viewer.querySelector('.viewer-close').addEventListener('click', () => viewer.close());
+// Stop the demo video when the viewer closes
+viewer.addEventListener('close', () => { viewerFrame.replaceChildren(); loadToken++; });
 viewer.addEventListener('click', (e) => { if (e.target === viewer || e.target.classList.contains('viewer-stage') || e.target.classList.contains('viewer-figure')) viewer.close(); });
 viewer.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') showShot(shotIndex - 1);

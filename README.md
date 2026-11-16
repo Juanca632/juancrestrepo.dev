@@ -11,5 +11,5 @@ This repo is my portfolio: **[juancrestrepo.dev](https://juancrestrepo.dev)**
 - Email: [juancrestrepo.dev@gmail.com](mailto:juancrestrepo.dev@gmail.com)
 
 Featured projects: [movies_app](https://github.com/Juanca632/movies_app) ·
-[monthwise](https://github.com/Juanca632/monthwise) ·
+[cashmind](https://github.com/Juanca632/cashmind) ·
 [steam-backlog-coach](https://github.com/Juanca632/steam-backlog-coach)
